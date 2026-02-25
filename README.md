@@ -50,8 +50,6 @@ npm install
 npm start
 ```
 
-The app runs at **https://localhost:3000** (HTTPS required for Freighter wallet).
-
 ### 4. Connect Your Wallet
 
 1. Install the [Freighter](https://freighter.app) browser extension
@@ -59,12 +57,9 @@ The app runs at **https://localhost:3000** (HTTPS required for Freighter wallet)
 3. Fund your account at [friendbot.stellar.org](https://friendbot.stellar.org)
 4. Click **"CONNECT WALLET"** in the app and select Freighter
 
-
-
 ## Smart Contract
 
 The Soroban smart contract is located at `swap-contract/contracts/hello-world/src/lib.rs`.
-
 
 ### Build & Test the Contract
 

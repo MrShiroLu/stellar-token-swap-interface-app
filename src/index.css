@@ -1,0 +1,202 @@
+@font-face {
+  font-family: 'Bittypix Monospace';
+  src: url('./fonts/Bittypix\ Monospace.woff') format('woff'),
+    url('./fonts/Bittypix\ Monospace.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+::selection {
+  background: #e76f51;
+  color: #fff;
+}
+
+:root {
+  /* 1. Typography & Modular Scale (Perfect Fourth Ratio: 1.333) */
+  --font-family-primary: "Bittypix Monospace";
+
+  --font-size-base: 16px;
+  --font-size-p: var(--font-size-base);
+  --font-size-h3: calc(var(--font-size-base) * 1.333);
+  /* ~21.33px */
+  --font-size-h2: calc(var(--font-size-h3) * 1.333);
+  /* ~28.43px */
+  --font-size-h1: calc(var(--font-size-h2) * 1.333);
+  /* ~37.90px */
+
+  --lh-body: 1.5;
+  --lh-heading: 1.1;
+
+  /* 2. Grid Alignment Configuration */
+  --grid-interval: 24px;
+  /* Matches 16px base * 1.5 line height */
+
+  /* 3. Softened Monochrome Palette */
+  --color-black: #1a1a1a;
+  --color-dark-gray: #4a4a4a;
+  --color-light-gray: #e6e6e6;
+  --color-white: #e8e3d9;
+  /* Warm vintage paper tone to kill glare */
+  --color-white-pure: #f5f2e8;
+  /* Slightly brighter for inner box contrast */
+}
+
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-white);
+
+  /* Barely visible dotted paper effect */
+  background-image: radial-gradient(circle, #ebebeb 1px, transparent 1.5px);
+  background-size: var(--grid-interval) var(--grid-interval);
+  background-position: calc(var(--grid-interval) / 2) calc(var(--grid-interval) / 2);
+
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--lh-body);
+  color: var(--color-black);
+
+  /* Natural tracking and smoothed rendering /* Removed antialiasing rules to keep pixels incredibly crisp and dark */
+  letter-spacing: 0.03em;
+
+  /* Lock viewport breathing room to the background grid */
+  padding: calc(var(--grid-interval) * 3) var(--grid-interval);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Flexbox Layout directly mapped to grid dimensions */
+main {
+  width: 100%;
+  max-width: calc(var(--grid-interval) * 43);
+  /* ~1215px */
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--grid-interval) * 1);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-interval);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-black);
+  padding: calc(var(--grid-interval) * 1.5) calc(var(--grid-interval) * 2);
+  /* Softer grid shadow */
+  box-shadow: 6px 6px 0 var(--color-light-gray);
+}
+
+/* Typographic Hierarchy Rules */
+h1,
+h2,
+h3 {
+  color: var(--color-black);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+p {
+  color: var(--color-black);
+  font-weight: 400;
+}
+
+/* Semantic List Styling */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--grid-interval) / 2);
+  margin: calc(var(--grid-interval) / 2) 0;
+}
+
+li {
+  position: relative;
+  padding-left: calc(var(--grid-interval) * 1.75);
+  color: var(--color-black);
+}
+
+li::before {
+  content: ">>";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-black);
+  font-weight: 700;
+  line-height: inherit;
+}
+
+/* Call-to-Action / Button Rules */
+button {
+  align-self: flex-start;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  padding: calc(var(--grid-interval) / 2) var(--grid-interval);
+  text-transform: uppercase;
+  /* Specialized expanded tracking for interactive labels */
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  margin-top: calc(var(--grid-interval) / 2);
+}
+
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
+  background-color: var(--color-dark-gray);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--color-light-gray);
+  outline: none;
+}
+
+button:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+button:disabled {
+  background-color: var(--color-dark-gray);
+  color: var(--color-light-gray);
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Responsive Breakpoints maintaining structural integrity */
+@media (max-width: 600px) {
+  body {
+    padding: calc(var(--grid-interval) * 1.5) calc(var(--grid-interval) / 2);
+  }
+
+  section {
+    padding: var(--grid-interval);
+    box-shadow: 8px 8px 0 var(--color-light-gray);
+  }
+
+  main {
+    gap: var(--grid-interval);
+  }
+}
